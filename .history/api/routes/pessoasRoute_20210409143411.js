@@ -5,14 +5,9 @@ const router = Router();
 
 router.get('/pessoas', PessoaController.index);
 router.get('/pessoas/:id', PessoaController.show);
+router.get('/pessoas/:id/', PessoaController.showMatricula);
 router.post('/pessoas', PessoaController.create);
 router.put('/pessoas/:id', PessoaController.update);
 router.delete('/pessoas/:id', PessoaController.delete);
-
-// matricula
-router.get('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.showMatricula);
-router.post('/pessoas/:estudanteId/matricula', PessoaController.createMatricula);
-router.put('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.updateMatricula);
-router.delete('/pessoas/:estudanteId/matricula/:matriculaId', PessoaController.deleteMatricula);
 
 module.exports = router;

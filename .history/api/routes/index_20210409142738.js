@@ -1,11 +1,12 @@
 const express = require('express');
 const pessoas = require('./pessoasRoute');
 const niveis = require('./niveisRoute');
-const turmas = require('./turmasRoute');
+const turmas = require('./niveisRoute');
 
 module.exports = app => {
 
   app.use(express.json());
-  app.use(pessoas, turmas, niveis);
+  app.use(pessoas);
+
 }
 

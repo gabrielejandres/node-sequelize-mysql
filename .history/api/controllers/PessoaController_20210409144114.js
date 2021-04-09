@@ -88,10 +88,9 @@ class PessoaController {
     try {
       await database.Matriculas.update(novasInfos, { where: { 
                                                       id: Number(matriculaId),
-                                                      estudante_id: Number(estudanteId) 
-                                                    }});
-      const matriculaAtualizada = await database.Matriculas.findOne({ where: {id: Number(matriculaId) }});
-      return response.status(200).json(matriculaAtualizada);
+                                                      estudante_id: Number(estudanteId) }});
+      const pessoaAtualizada = await database.Pessoas.findOne({ where: {id: Number(id) }});
+      return response.status(200).json(pessoaAtualizada);
     } catch(error) {
       return response.status(500).json(error.message);
     }
@@ -100,8 +99,8 @@ class PessoaController {
   static async deleteMatricula(request, response) {
     const { id } = request.params;
     try {
-      await database.Matriculas.destroy({ where: {id: Number(id) }});
-      return response.status(200).json({ mensagem: `Matricula ${id} deletada!`});
+      await database.Pessoas.destroy({ where: {id: Number(id) }});
+      return response.status(200).json({ mensagem: `Pessoa ${id} deletada!`});
     } catch(error) {
       return response.status(500).json(error.message);
     }

@@ -7,5 +7,6 @@ module.exports = app => {
 
   app.use(express.json());
   app.use(pessoas, turmas, niveis);
+
 }
 

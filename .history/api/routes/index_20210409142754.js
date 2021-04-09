@@ -6,6 +6,7 @@ const turmas = require('./turmasRoute');
 module.exports = app => {
 
   app.use(express.json());
-  app.use(pessoas, turmas, niveis);
+  app.use(pessoas, turmas);
+
 }
 

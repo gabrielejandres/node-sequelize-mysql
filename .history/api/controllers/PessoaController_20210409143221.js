@@ -61,47 +61,8 @@ class PessoaController {
   static async showMatricula(request, response) {
     const { estudanteId, matriculaId } = request.params;
     try {
-      const matricula = await database.Matriculas.findOne({ where: {
-                                                                id: Number(matriculaId),
-                                                                estudante_id: Number(estudanteId) 
-                                                          }});
-      return response.status(200).json(matricula);
-    } catch(error) {
-      return response.status(500).json(error.message);
-    }
-  }
-
-  static async createMatricula(request, response) {
-    const { estudanteId } = request.params;
-    const novaMatricula  = { ...request.body, estudante_id: Number(estudanteId) };
-    try {
-      const matricula = await database.Matriculas.create(novaMatricula);
-      return response.status(200).json(matricula);
-    } catch(error) {
-      return response.status(500).json(error.message);
-    }
-  }
-
-  static async updateMatricula(request, response) {
-    const novasInfos  = request.body;
-    const { estudanteId, matriculaId } = request.params;
-    try {
-      await database.Matriculas.update(novasInfos, { where: { 
-                                                      id: Number(matriculaId),
-                                                      estudante_id: Number(estudanteId) 
-                                                    }});
-      const matriculaAtualizada = await database.Matriculas.findOne({ where: {id: Number(matriculaId) }});
-      return response.status(200).json(matriculaAtualizada);
-    } catch(error) {
-      return response.status(500).json(error.message);
-    }
-  }
-
-  static async deleteMatricula(request, response) {
-    const { id } = request.params;
-    try {
-      await database.Matriculas.destroy({ where: {id: Number(id) }});
-      return response.status(200).json({ mensagem: `Matricula ${id} deletada!`});
+      const pessoa = await database.Pessoas.findOne({ where: {id: Number(id) }});
+      return response.status(200).json(pessoa);
     } catch(error) {
       return response.status(500).json(error.message);
     }
