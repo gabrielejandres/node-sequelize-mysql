@@ -1,10 +1,10 @@
 const express = require('express');
-const routes = require('./routes');
 
 const app = express();
-const port = 3333;
 
-routes(app);
+app.use(express.json());
+
+const port = 3333;
 
 app.listen(port, () => console.log(`servidor está rodando na porta ${port}`));
 

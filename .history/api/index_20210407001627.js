@@ -1,10 +1,14 @@
 const express = require('express');
-const routes = require('./routes');
 
 const app = express();
+
+app.use(express.json());
+
 const port = 3333;
 
-routes(app);
+app.get('/teste', (request, response) => {
+  response.status(200).send({mensagem: 'welcome'})
+});
 
 app.listen(port, () => console.log(`servidor está rodando na porta ${port}`));
 
